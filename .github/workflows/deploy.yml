@@ -25,6 +25,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Load & cache dependencies
+        id: cache-deps
         uses: ./.github/actions/cached-dep
       - name: Output cache usage information
         run: echo "Cache used? ${{ steps.cache-deps.outputs.used-cache }}"
@@ -44,6 +45,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Load & cache dependencies
+        id: cache-deps
         uses: ./.github/actions/cached-dep
       - name: Output cache usage information
         run: echo "Cache used? ${{ steps.cache-deps.outputs.used-cache }}"
