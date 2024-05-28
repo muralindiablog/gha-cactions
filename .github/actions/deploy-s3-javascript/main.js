@@ -10,7 +10,7 @@ function run() {
   const distFolder = core.getInput('dist-folder', { required: true });
 
   //2. upload to s3
-  const s3Uri = `s3://${bucket}`
+  const s3Uri = `s3://${bucket}`;
 exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`);
 
   core.notice('Hello from my custom javascript action!')

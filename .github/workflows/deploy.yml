@@ -80,3 +80,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Run custom action
         uses: ./.github/actions/deploy-s3-javascript
+        with:
+          bucket: samplegha-s3210
+          dist-folder: ./dist
