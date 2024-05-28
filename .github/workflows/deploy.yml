@@ -63,12 +63,17 @@ jobs:
           path: ./dist
       - name: Output contents
         run: ls
+      - name: Get AWS premissions
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::"${{ secrets.ACC_NO }}":role/sgha-oidc-role
+          aws-region: us-east-1
       - name: Deploy site
         uses: ./.github/actions/deploy-s3-javascript
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        # env:
+          # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         with: 
           bucket: samplegha-s3210
           dist-folder: ./dist
