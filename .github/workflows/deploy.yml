@@ -74,6 +74,7 @@ jobs:
           dist-folder: ./dist
           # bucket-region:
   information:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Get code
